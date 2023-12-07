@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Images</title>
+</head>
+
+<body>
+    <h1>Image Upload Form</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <label for="photo">Select an image to upload:</label>
+        {{ form.photo() }}
+        {% if form.photo.errors %}
+        <p style="color: red;">{{ form.photo.errors[0] }}</p>
+        {% endif %}
+        <br>
+        <button type="submit">Upload</button>
+    </form>
+    {% if file_url %}
+    <h2>Uploaded Image:</h2>
+    <img src="{{ file_url }}" alt="Uploaded Image">
+    {% endif %}
+</body>
+
+</html>
