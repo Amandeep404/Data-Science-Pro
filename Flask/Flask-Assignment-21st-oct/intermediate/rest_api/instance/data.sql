@@ -1,0 +1,10 @@
+INSERT INTO book (author, book, price) VALUES ('John', 'Python', 100);
+INSERT INTO book (author, book, price) VALUES ('Smith', 'Java', 200);
+INSERT INTO book (author, book, price) VALUES ('Peter', 'C++', 300);
+INSERT INTO book (author, book, price) VALUES ('Bob', 'C', 400);
+INSERT INTO book (author, book, price) VALUES ('Tom', 'C#', 500);
+INSERT INTO book (author, book, price) VALUES ('Jerry', 'PHP', 600);
+INSERT INTO book (author, book, price) VALUES ('Mike', 'Ruby', 700);
+INSERT INTO book (author, book, price) VALUES ('Mary', 'Perl', 400);
+INSERT INTO book (author, book, price) VALUES ('David', 'JavaScript', 700);
+INSERT INTO book (author, book, price) VALUES ('Jack', 'Swift', 500);

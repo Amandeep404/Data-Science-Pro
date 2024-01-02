@@ -1,0 +1,55 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Notifications</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+</head>
+
+<body>
+    <h1>WebSocket Notifications</h1>
+
+    <div id="notification"></div>
+
+    <form id="messageForm">
+        <label for="messageInput">Enter Message:</label>
+        <input type="text" id="messageInput" name="messageInput" required>
+        <button type="button" onclick="sendMessage()">Send Message</button>
+    </form>
+
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        socket.on('notification', function (msg) {
+            var notificationDiv = document.getElementById('notification');
+            notificationDiv.innerHTML = '<p>New Notification: ' + msg + '</p>';
+
+            // Display a browser notification if permission is granted
+            if (Notification.permission === 'granted') {
+                new Notification('New Notification', {
+                    body: msg,
+                });
+            }
+        });
+
+        function sendMessage() {
+            var messageInput = document.getElementById('messageInput');
+            var message = messageInput.value.trim();
+            if (message !== '') {
+                socket.emit('message', message);
+                messageInput.value = '';
+            }
+        }
+
+        // Request permission for browser notifications
+        if (Notification.permission !== 'granted') {
+            Notification.requestPermission();
+        }
+    </script>
+</body>
+
+</html>
