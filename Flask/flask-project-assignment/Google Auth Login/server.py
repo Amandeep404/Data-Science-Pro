@@ -1,16 +1,10 @@
 from flask import Flask, url_for,session , redirect, render_template, abort
 from authlib.integrations.flask_client import OAuth
 import json, requests
+from appConfig import app_config
 
 app = Flask(__name__)
 
-app_config = {
-    'OAUTH2_CLIENT_ID':'359090012761-arl7t3sk750kv7pnj7va26919622434r.apps.googleusercontent.com',
-    'OAUTH2_CLIENT_SECRET':'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',
-    'OAUTH2_META_URL':'https://accounts.google.com/.well-known/openid-configuration',
-    'FLASK_SECRET_KEY':'hello',
-    'FLASK_PORT':5000
-}
 app.secret_key = app_config.get('FLASK_SECRET_KEY')
 
 
